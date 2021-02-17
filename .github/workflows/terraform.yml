@@ -19,9 +19,10 @@ jobs:
         with:
           secrets: |-
             token:projects/808601317670/secrets/credential
+          credentials: ${{ secrets.DEV_SA_KEY}}
 
       - id: publish
-        uses: foo/bar@master
+        uses: amitkumardube/terraform@main
         env:
           TOKEN: ${{ steps.secrets.outputs.token }}
 
