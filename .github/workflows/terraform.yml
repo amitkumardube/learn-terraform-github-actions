@@ -21,7 +21,7 @@ jobs:
         uses: google-github-actions/get-secretmanager-secrets@main
         with:
           secrets: |-
-            token:my-first-project-298218/credential
+            token: projects/808601317670/secrets/credential
           credentials: ${{ secrets.DEV_SA_KEY }}
       - id: publish
         run: |-
