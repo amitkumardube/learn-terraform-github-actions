@@ -22,9 +22,8 @@ jobs:
           credentials: ${{ secrets.DEV_SA_KEY}}
 
       - id: publish
-        uses: amitkumardube/terraform@main
-        env:
-          TOKEN: ${{ steps.secrets.outputs.token }}
+        run: |-
+          echo ${{ steps.secrets.outputs.token }}
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
