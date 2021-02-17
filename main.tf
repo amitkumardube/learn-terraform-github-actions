@@ -1,10 +1,10 @@
 terraform {
   backend "remote" {
-     organization = "terraform-associate-certification"
-     workspaces {
-       name = "gh-actions-demo"
-     }
-   }
+    organization = "terraform-associate-certification"
+    workspaces {
+      name = "gh-actions-demo"
+    }
+  }
   required_providers {
     google = {
       source  = "hashicorp/google"
@@ -22,9 +22,9 @@ provider "google" {
 
 resource "google_compute_instance" "vm_instance" {
   //depends_on = [google_storage_bucket.example_bucket]
-  name         = var.instance_name
-  machine_type = var.instance_type
-  tags = var.instance_tags
+  name                      = var.instance_name
+  machine_type              = var.instance_type
+  tags                      = var.instance_tags
   allow_stopping_for_update = true
 
   boot_disk {
@@ -39,7 +39,7 @@ resource "google_compute_instance" "vm_instance" {
     }
   }
 
-  provisioner "local-exec"{
+  provisioner "local-exec" {
     command = "echo ${google_compute_instance.vm_instance.name} : ${google_compute_instance.vm_instance.network_interface[0].access_config[0].nat_ip} >> ip_address.txt"
   }
 }
