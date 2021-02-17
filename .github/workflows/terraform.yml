@@ -22,19 +22,7 @@ jobs:
         with:
           secrets: |-
             token:my-first-project-298218/credential
-          credentials: |-
-            {
-              "type": "service_account",
-              "project_id": "my-first-project-298218",
-              "private_key_id": "a7316b8c956064abe8adb892ab2158f8a86b69b9",
-              "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC5Dp6v8TTNCo9a\n+xyfJ82nZBL/fr/7J8innUTVmICzsYpXZNo2KePEtu/PW6rKygZlqHbf/SrgxSx8\nmMSWMY+cLZbCT1GC20KMnSrsePShzJAK2PBtyxfSJXqiEM5Gbjy080rUIQ4oGSVJ\nOcmZkpjkhKgoDg4sVnUQqAsO6N5p1VtRp9GgsighQp+JD51bP0ITyvxG31oetxZf\nTQq9wM1judflxKOrTA/P83V/f70SMqFBBu/w+SD5c0CUJaqY9YWC6wEOcp0pE0sy\n3gvxpDkVFRhAc4UmyQbDu3cD0kjxufHCfQjpJcF6DFJHtddHTULd0eTFh1t8T+5t\nap0l9yjRAgMBAAECggEAJE6j/6z5SQk7WwRNd0Rd6uuNdqctj18c1RXb/XQwPBEn\nLUJSNbI+R8gEgNBhT+wXGTbWK9gF45eLxN5MI5ORs3iWTYU2XtAZ3HCxjTel92Cl\nGhu6ADCKeeZ0ivt1HQhfzLi3A6uAlYlpcVZvITxL1vnX7BPl3/kOergdg01Y5bZq\nM66pB493H+4A3h0TaZBUnGxTrqTNCMxptO9pFL9NIoKKuf+OvybSwnHLqkJD4bB4\neZn/PhjWIqDgAOwchXCOUVd1OT4vsojXiP8ftWbxwP4f7vMxw/5pRFrgJ7GXRyY8\noTOUXddpjOjLCdO2fFfQa/8T1AI9jaBz77EYarvzKQKBgQD6qANFD/n5/gzUdTOX\nXvYE4JGrgrylalCkMyr81FvbpDtjNxsIpIq9JsMPImDny9pBwvgrhraaf5YayYKG\nYdXm/Vi/0CS9QR7xg0m0nC8wsIDFE49kE1ZjhxKeZAA9WVYNHMTyk19LWpWvavaM\n74RZGd2Un0LqRPLSpmrIfFzFHwKBgQC9AJdvLJA6QTYs86WFE6pQ0O42tG/h8pv+\nRUbY6KFQKfpZg7s7FkDoFBfyzmiTfmd2G8YKN4c1nPbwKJvx+NMC3n4srroBf9r7\n38mvca0dlAHFPK1Sv0QGDcoBd8ReKpPXHq/QOW2Yo9tNFB8M3EIwNcTFoqmNh9bE\nF350bAjkDwKBgEALN7Kor11RrSOHwqPVjpSWcIHbCKpXLL2XmU86TzIil031YYHm\n0NAdnE88oHf5XQ3abCBq7jMxkD/N5vzA+K9pYgi4fPqiLe7VdbqhAWm2X2B7a/LN\nAhCyDW7M7EbAkb0N8cBtKTcOsRo+ATrnY/CELFpyCt3iugxamwQYyndPAoGBAKHJ\nc9fy6bM0R0/LcRCteMmdT4z8gBmGOAo8+xyKZivdAzTFEuzNa9o9+RIbpmE7fw0X\nUTtFtTQrnSaPXI6RVO/LzW4qU4cdDzM0qczJHkuHesx/2E5Q88XK3/TJtQp2n/8x\ngYZY4nwbJ4qfgsTbdr0WCc60IzfH5AwPoGvAXwv5AoGBAKvaHWCr+zymat6dpiLZ\nNETf3GD73pRE+lDMQTxmrMXr7cxutRvCxHHlGOBeJm6iDQMxL6noXIjiWX2Pmhbh\nQdJskd+MXxgOPkfx6uKZgc6xb7S3rIHGwIpAnKWvxMdKT0jgbVkCd8vuOM2OxjCa\nYO9RIbGwk+dS0QGFyfdaLOSC\n-----END PRIVATE KEY-----\n",
-              "client_email": "terraform@my-first-project-298218.iam.gserviceaccount.com",
-              "client_id": "112131993546014877516",
-              "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-              "token_uri": "https://oauth2.googleapis.com/token",
-              "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-              "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/terraform%40my-first-project-298218.iam.gserviceaccount.com"
-            }
+          credentials: ${{ secrets.DEV_SA_KEY }}
       - id: publish
         run: |-
           echo ${{ steps.secrets.outputs.token }}
