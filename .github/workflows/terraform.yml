@@ -31,6 +31,12 @@ jobs:
           # terraform_version: 0.13.0:
           cli_config_credentials_token: ${{ steps.secrets.outputs.TF_API_TOKEN }}
 
+      - name: Setup Terraform variables
+        id: vars
+        run: |-
+          cat > pipeline.auto.tfvars <<EOF
+          google_provider_credential = "${{ steps.secrets.outputs.credential }}"
+          EOF
       - name: Terraform Format
         id: fmt
         run: terraform fmt -check
@@ -79,6 +85,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.secrets.outputs.credential }}
         run: terraform apply -auto-approve

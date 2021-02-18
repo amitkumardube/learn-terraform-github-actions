@@ -17,3 +17,7 @@ variable "region" {
 variable "zone" {
   type = string
 }
+
+variable "google_provider_credential" {
+  type = string
+}
