@@ -21,14 +21,15 @@ jobs:
         uses: google-github-actions/get-secretmanager-secrets@main
         with:
           secrets: |-
-            token: projects/808601317670/secrets/TF_API_TOKEN
+            TF_API_TOKEN: projects/808601317670/secrets/TF_API_TOKEN
+            credential: projects/808601317670/secrets/credential
           credentials: ${{ secrets.DEV_SA_KEY }}
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
           # terraform_version: 0.13.0:
-          cli_config_credentials_token: ${{ steps.secrets.outputs.token }}
+          cli_config_credentials_token: ${{ steps.secrets.outputs.TF_API_TOKEN }}
 
       - name: Terraform Format
         id: fmt
@@ -77,4 +78,6 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.secrets.outputs.credential }}
         run: terraform apply -auto-approve
