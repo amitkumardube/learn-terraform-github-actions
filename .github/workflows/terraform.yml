@@ -21,20 +21,14 @@ jobs:
         uses: google-github-actions/get-secretmanager-secrets@main
         with:
           secrets: |-
-            token: projects/808601317670/secrets/credential
+            token: projects/808601317670/secrets/TF_API_TOKEN
           credentials: ${{ secrets.DEV_SA_KEY }}
-      - id: publish
-        env: |
-          token:  ${{ steps.secrets.outputs.token }}
-        run: |
-          echo $env.token
-        shell: bash
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
           # terraform_version: 0.13.0:
-          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+          cli_config_credentials_token: ${{ steps.secrets.outputs.token }}
 
       - name: Terraform Format
         id: fmt
