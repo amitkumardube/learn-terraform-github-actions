@@ -34,7 +34,7 @@ jobs:
       - name: Setup Terraform variables
         id: vars
         run: |-
-          echo 'credential<<-EOF' >> $GITHUB_ENV
+          echo 'credential<<EOF' >> $GITHUB_ENV
             "${{ steps.secrets.outputs.credential }}" >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
