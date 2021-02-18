@@ -1,10 +1,10 @@
 terraform {
-  backend "remote" {
+ /* backend "remote" {
     organization = "terraform-associate-certification"
     workspaces {
       name = "gh-actions-demo"
     }
-  }
+  }*/
   required_providers {
     google = {
       source  = "hashicorp/google"
