@@ -14,7 +14,7 @@ terraform {
 }
 
 provider "google" {
-
+  credentials = var.google_provider_credential
   project = "my-first-project-298218"
   region  = var.region
   zone    = var.zone
