@@ -33,11 +33,11 @@ jobs:
 
       - name: Setup Terraform variables
         id: vars
-        env:
-          credential = <<-EOF
-            "${{ steps.secrets.outputs.credential }}"
-          EOF
         run: |-
+          echo 'credential<<-EOF' >> $GITHUB_ENV
+            "${{ steps.secrets.outputs.credential }}" >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+
           cat > pipeline.auto.tfvars <<EOF
           google_provider_credential = ${{ env.credential }}
           EOF
