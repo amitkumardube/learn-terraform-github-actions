@@ -24,8 +24,9 @@ jobs:
             token: projects/808601317670/secrets/credential
           credentials: ${{ secrets.DEV_SA_KEY }}
       - id: publish
-        run: |-
+        run: |
           echo ${{ steps.secrets.outputs.token }}
+        shell: bash
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
