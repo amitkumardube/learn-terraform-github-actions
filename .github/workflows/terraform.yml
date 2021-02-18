@@ -24,8 +24,10 @@ jobs:
             token: projects/808601317670/secrets/credential
           credentials: ${{ secrets.DEV_SA_KEY }}
       - id: publish
+        env: |
+          token:  ${{ steps.secrets.outputs.token }}
         run: |
-          echo ${{ steps.secrets.outputs.token }}
+          echo $env.token
         shell: bash
 
       - name: Setup Terraform
